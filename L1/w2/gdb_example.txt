@@ -1,0 +1,191 @@
+Script started on 2022-01-19 19:53:40-0500
+ramir228@dh2020pc04:~/209/labs/L1/w2$ cd ..
+ramir228@dh2020pc04:~/209/labs/L1$ ls
+overflow  overflow.c  w2
+ramir228@dh2020pc04:~/209/labs/L1$ gdb overflow
+[35;1m[35;1mGNU gdb [m[35;1m(Ubuntu 10.2-0ubuntu1~18.04~2) [m[35;1m10.2[m[35;1m
+[m[mCopyright (C) 2021 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from [32moverflow[m...
+(gdb) ls[Kist
+1	[01;34m#include[m [31m<stdio.h>[m
+2	
+3	[01;34m#define[m SIZE [35m4[m
+4	[01;34m#define[m OVERFLOW [35m5[m
+5	
+6	[32mint[m [01;30mmain[m[31m()[m [31m{[m
+7	    [32mint[m index [31m=[m [35m0[m[31m;[m
+8	    [32mint[m i[31m;[m
+9	    [32mint[m before[31m[[mSIZE[31m][m [31m=[m [31m{[m[35m10[m[31m,[m [35m10[m[31m,[m [35m10[m[31m,[m [35m10[m[31m}[m[31m;[m
+10	    [32mint[m a[31m[[mSIZE[31m][m [31m=[m [31m{[m[35m0[m[31m,[m [35m0[m[31m,[m [35m0[m[31m,[m [35m0[m[31m}[m[31m;[m
+(gdb) list[10]
+Function "[10]" not defined.
+(gdb) list 
+11	    [32mint[m after[31m[[mSIZE[31m][m [31m=[m [31m{[m[35m10[m[31m,[m [35m10[m[31m,[m [35m10[m[31m,[m [35m10[m[31m}[m[31m;[m
+12	
+13	    [01;30mprintf[m[31m([m[31m"Address of the variables:[m[35m\n[m[31m"[m[31m);[m
+14	    [01;34mfor[m [31m([mindex [31m=[m [35m0[m[31m;[m index [31m<[m SIZE[31m;[m index[31m++)[m [31m{[m
+15	        [01;30mprintf[m[31m([m[31m"%lx -> &after[%d][m[35m\n[m[31m"[m[31m,[m [31m([m[32munsigned[m [32mlong[m[31m)[m [31m&[mafter[31m[[mindex[31m],[m index[31m);[m
+16	    [31m}[m
+17	    [01;34mfor[m [31m([mindex [31m=[m [35m0[m[31m;[m index [31m<[m SIZE[31m;[m index[31m++)[m [31m{[m
+18	        [01;30mprintf[m[31m([m[31m"%lx -> &a[%d][m[35m\n[m[31m"[m[31m,[m [31m([m[32munsigned[m [32mlong[m[31m)[m [31m&[ma[31m[[mindex[31m],[m index[31m);[m
+19	    [31m}[m
+20	    [01;34mfor[m [31m([mindex [31m=[m [35m0[m[31m;[m index [31m<[m SIZE[31m;[m index[31m++)[m [31m{[m
+(gdb) list
+21	        [01;30mprintf[m[31m([m[31m"%lx -> &before[%d][m[35m\n[m[31m"[m[31m,[m [31m([m[32munsigned[m [32mlong[m[31m)[m [31m&[mbefore[31m[[mindex[31m],[m index[31m);[m
+22	    [31m}[m
+23	    [01;30mprintf[m[31m([m[31m"%lx -> &i[m[35m\n[m[31m"[m[31m,[m [31m([m[32munsigned[m [32mlong[m[31m)&[mi[31m);[m
+24	    [01;30mprintf[m[31m([m[31m"%lx -> &index[m[35m\n[m[31m"[m[31m,[m [31m([m[32munsigned[m [32mlong[m[31m)&[mindex[31m);[m
+25	    [01;30mprintf[m[31m([m[31m"[m[35m\n[m[31m"[m[31m);[m
+26	
+27	
+28	    [01;30mprintf[m[31m([m[31m"Initial values:[m[35m\n[m[31m"[m[31m);[m
+29	    [01;30mprintf[m[31m([m[31m"i = %d[m[35m\n[m[31m"[m[31m,[m i[31m);[m
+30	    [01;30mprintf[m[31m([m[31m"before = {%d, %d, %d, %d}[m[35m\n[m[31m"[m[31m,[m before[31m[[m[35m0[m[31m],[m before[31m[[m[35m1[m[31m],[m before[31m[[m[35m2[m[31m],[m before[31m[[m[35m3[m[31m]);[m
+(gdb) list
+31	    [01;30mprintf[m[31m([m[31m"a = {%d, %d, %d, %d}[m[35m\n[m[31m"[m[31m,[m a[31m[[m[35m0[m[31m],[m a[31m[[m[35m1[m[31m],[m a[31m[[m[35m2[m[31m],[m a[31m[[m[35m3[m[31m]);[m
+32	    [01;30mprintf[m[31m([m[31m"after = {%d, %d, %d, %d}[m[35m\n[m[31m"[m[31m,[m after[31m[[m[35m0[m[31m],[m after[31m[[m[35m1[m[31m],[m after[31m[[m[35m2[m[31m],[m after[31m[[m[35m3[m[31m]);[m
+33	    [01;30mprintf[m[31m([m[31m"[m[35m\n[m[31m"[m[31m);[m
+34	
+35	
+36	    [01;34mfor[m [31m([mi [31m=[m [35m0[m[31m;[m i [31m<[m OVERFLOW[31m;[m i[31m++)[m [31m{[m
+37	        a[31m[[mi[31m][m [31m=[m i [31m*[m [35m10[m[31m;[m
+38	        [01;30mprintf[m[31m([m[31m"i = %d[m[35m\n[m[31m"[m[31m,[m i[31m);[m
+39	        [01;30mprintf[m[31m([m[31m"before = {%d, %d, %d, %d}[m[35m\n[m[31m"[m[31m,[m before[31m[[m[35m0[m[31m],[m before[31m[[m[35m1[m[31m],[m before[31m[[m[35m2[m[31m],[m before[31m[[m[35m3[m[31m]);[m
+40	        [01;30mprintf[m[31m([m[31m"a = {%d, %d, %d, %d}[m[35m\n[m[31m"[m[31m,[m a[31m[[m[35m0[m[31m],[m a[31m[[m[35m1[m[31m],[m a[31m[[m[35m2[m[31m],[m a[31m[[m[35m3[m[31m]);[m
+(gdb) brek[Kak 36
+Breakpoint 1 at [34m0x934[m: file [32moverflow.c[m, line 36.
+(gdb) continue
+The program is not being run.
+(gdb) run
+Starting program: /student/ramir228/209/labs/L1/overflow 
+Address of the variables:
+7fffffffe8c0 -> &after[0]
+7fffffffe8c4 -> &after[1]
+7fffffffe8c8 -> &after[2]
+7fffffffe8cc -> &after[3]
+7fffffffe8b0 -> &a[0]
+7fffffffe8b4 -> &a[1]
+7fffffffe8b8 -> &a[2]
+7fffffffe8bc -> &a[3]
+7fffffffe8a0 -> &before[0]
+7fffffffe8a4 -> &before[1]
+7fffffffe8a8 -> &before[2]
+7fffffffe8ac -> &before[3]
+7fffffffe89c -> &i
+7fffffffe898 -> &index
+
+Initial values:
+i = 0
+before = {10, 10, 10, 10}
+a = {0, 0, 0, 0}
+after = {10, 10, 10, 10}
+
+
+Breakpoint 1, [33mmain[m () at [32moverflow.c[m:36
+36	    [01;34mfor[m [31m([mi [31m=[m [35m0[m[31m;[m i [31m<[m OVERFLOW[31m;[m i[31m++)[m [31m{[m
+(gdb) next
+37	        a[31m[[mi[31m][m [31m=[m i [31m*[m [35m10[m[31m;[m
+(gdb) next
+38	        [01;30mprintf[m[31m([m[31m"i = %d[m[35m\n[m[31m"[m[31m,[m i[31m);[m
+(gdb) next
+i = 0
+39	        [01;30mprintf[m[31m([m[31m"before = {%d, %d, %d, %d}[m[35m\n[m[31m"[m[31m,[m before[31m[[m[35m0[m[31m],[m before[31m[[m[35m1[m[31m],[m before[31m[[m[35m2[m[31m],[m before[31m[[m[35m3[m[31m]);[m
+(gdb) next
+before = {10, 10, 10, 10}
+40	        [01;30mprintf[m[31m([m[31m"a = {%d, %d, %d, %d}[m[35m\n[m[31m"[m[31m,[m a[31m[[m[35m0[m[31m],[m a[31m[[m[35m1[m[31m],[m a[31m[[m[35m2[m[31m],[m a[31m[[m[35m3[m[31m]);[m
+(gdb) r[Kcontunie[K[K[K[K[Ktinue
+Continuing.
+a = {0, 0, 0, 0}
+after = {10, 10, 10, 10}
+i = 1
+before = {10, 10, 10, 10}
+a = {0, 10, 0, 0}
+after = {10, 10, 10, 10}
+i = 2
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 0}
+after = {10, 10, 10, 10}
+i = 3
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {10, 10, 10, 10}
+i = 4
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 10, 10, 10}
+[Inferior 1 (process 13783) exited normally]
+(gdb) next
+The program is not being run.
+(gdb) run
+Starting program: /student/ramir228/209/labs/L1/overflow 
+Address of the variables:
+7fffffffe8c0 -> &after[0]
+7fffffffe8c4 -> &after[1]
+7fffffffe8c8 -> &after[2]
+7fffffffe8cc -> &after[3]
+7fffffffe8b0 -> &a[0]
+7fffffffe8b4 -> &a[1]
+7fffffffe8b8 -> &a[2]
+7fffffffe8bc -> &a[3]
+7fffffffe8a0 -> &before[0]
+7fffffffe8a4 -> &before[1]
+7fffffffe8a8 -> &before[2]
+7fffffffe8ac -> &before[3]
+7fffffffe89c -> &i
+7fffffffe898 -> &index
+
+Initial values:
+i = 0
+before = {10, 10, 10, 10}
+a = {0, 0, 0, 0}
+after = {10, 10, 10, 10}
+
+
+Breakpoint 1, [33mmain[m () at [32moverflow.c[m:36
+36	    [01;34mfor[m [31m([mi [31m=[m [35m0[m[31m;[m i [31m<[m OVERFLOW[31m;[m i[31m++)[m [31m{[m
+(gdb) print &(after[0])
+$1 = (int *[36m[m) [34m0x7fffffffe8c0[m
+(gdb) next
+37	        a[31m[[mi[31m][m [31m=[m i [31m*[m [35m10[m[31m;[m
+(gdb) print &(after[0])
+$2 = (int *[36m[m) [34m0x7fffffffe8c0[m
+(gdb) next
+38	        [01;30mprintf[m[31m([m[31m"i = %d[m[35m\n[m[31m"[m[31m,[m i[31m);[m
+(gdb) next
+i = 0
+39	        [01;30mprintf[m[31m([m[31m"before = {%d, %d, %d, %d}[m[35m\n[m[31m"[m[31m,[m before[31m[[m[35m0[m[31m],[m before[31m[[m[35m1[m[31m],[m before[31m[[m[35m2[m[31m],[m before[31m[[m[35m3[m[31m]);[m
+(gdb) next
+before = {10, 10, 10, 10}
+40	        [01;30mprintf[m[31m([m[31m"a = {%d, %d, %d, %d}[m[35m\n[m[31m"[m[31m,[m a[31m[[m[35m0[m[31m],[m a[31m[[m[35m1[m[31m],[m a[31m[[m[35m2[m[31m],[m a[31m[[m[35m3[m[31m]);[m
+(gdb) print &(after[0])
+$3 = (int *[36m[m) [34m0x7fffffffe8c0[m
+(gdb) print &(after[0])[1P])4])[C[C
+$4 = (int *[36m[m) [34m0x7fffffffe8d0[m
+(gdb) next
+a = {0, 0, 0, 0}
+41	        [01;30mprintf[m[31m([m[31m"after = {%d, %d, %d, %d}[m[35m\n[m[31m"[m[31m,[m after[31m[[m[35m0[m[31m],[m after[31m[[m[35m1[m[31m],[m after[31m[[m[35m2[m[31m],[m after[31m[[m[35m3[m[31m]);[m
+(gdb) nextprint &(after[4])
+$5 = (int *[36m[m) [34m0x7fffffffe8d0[m
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 14372] will be killed.
+
+Quit anyway? (y or n) y
+ramir228@dh2020pc04:~/209/labs/L1$ exit
+exit
+
+Script done on 2022-01-19 20:05:32-0500

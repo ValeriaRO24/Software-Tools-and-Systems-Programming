@@ -1,0 +1,66 @@
+==11762== Memcheck, a memory error detector
+==11762== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==11762== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==11762== Command: ./ll_sum
+==11762== Parent PID: 3249
+==11762== 
+==11762== Conditional jump or move depends on uninitialised value(s)
+==11762==    at 0x4E9A9DA: vfprintf (vfprintf.c:1642)
+==11762==    by 0x4EA3015: printf (printf.c:33)
+==11762==    by 0x108801: main (ll_sum.c:32)
+==11762==  Uninitialised value was created by a heap allocation
+==11762==    at 0x4C31B0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==11762==    by 0x108765: main (ll_sum.c:18)
+==11762== 
+==11762== Use of uninitialised value of size 8
+==11762==    at 0x4E9696B: _itoa_word (_itoa.c:179)
+==11762==    by 0x4E9A00D: vfprintf (vfprintf.c:1642)
+==11762==    by 0x4EA3015: printf (printf.c:33)
+==11762==    by 0x108801: main (ll_sum.c:32)
+==11762==  Uninitialised value was created by a heap allocation
+==11762==    at 0x4C31B0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==11762==    by 0x108765: main (ll_sum.c:18)
+==11762== 
+==11762== Conditional jump or move depends on uninitialised value(s)
+==11762==    at 0x4E96975: _itoa_word (_itoa.c:179)
+==11762==    by 0x4E9A00D: vfprintf (vfprintf.c:1642)
+==11762==    by 0x4EA3015: printf (printf.c:33)
+==11762==    by 0x108801: main (ll_sum.c:32)
+==11762==  Uninitialised value was created by a heap allocation
+==11762==    at 0x4C31B0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==11762==    by 0x108765: main (ll_sum.c:18)
+==11762== 
+==11762== Conditional jump or move depends on uninitialised value(s)
+==11762==    at 0x4E9A114: vfprintf (vfprintf.c:1642)
+==11762==    by 0x4EA3015: printf (printf.c:33)
+==11762==    by 0x108801: main (ll_sum.c:32)
+==11762==  Uninitialised value was created by a heap allocation
+==11762==    at 0x4C31B0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==11762==    by 0x108765: main (ll_sum.c:18)
+==11762== 
+==11762== Conditional jump or move depends on uninitialised value(s)
+==11762==    at 0x4E9AC4C: vfprintf (vfprintf.c:1642)
+==11762==    by 0x4EA3015: printf (printf.c:33)
+==11762==    by 0x108801: main (ll_sum.c:32)
+==11762==  Uninitialised value was created by a heap allocation
+==11762==    at 0x4C31B0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==11762==    by 0x108765: main (ll_sum.c:18)
+==11762== 
+==11762== 
+==11762== HEAP SUMMARY:
+==11762==     in use at exit: 32 bytes in 2 blocks
+==11762==   total heap usage: 4 allocs, 2 frees, 2,080 bytes allocated
+==11762== 
+==11762== 32 (16 direct, 16 indirect) bytes in 1 blocks are definitely lost in loss record 2 of 2
+==11762==    at 0x4C31B0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==11762==    by 0x108765: main (ll_sum.c:18)
+==11762== 
+==11762== LEAK SUMMARY:
+==11762==    definitely lost: 16 bytes in 1 blocks
+==11762==    indirectly lost: 16 bytes in 1 blocks
+==11762==      possibly lost: 0 bytes in 0 blocks
+==11762==    still reachable: 0 bytes in 0 blocks
+==11762==         suppressed: 0 bytes in 0 blocks
+==11762== 
+==11762== For counts of detected and suppressed errors, rerun with: -v
+==11762== ERROR SUMMARY: 6 errors from 6 contexts (suppressed: 0 from 0)

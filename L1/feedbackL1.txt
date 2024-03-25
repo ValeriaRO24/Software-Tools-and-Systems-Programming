@@ -1,0 +1,6 @@
+04-February-2022 16:06:06 STARTING TEST RUN
+expected output:
+b'm1: 3 / 10\nm2: 3 / 10\nm3: 3 / 10\nm4: - / -\nm5: 3 / 10\nm6: - / -\n\nw1: 3 / 10\nw2: 3 / 10\nw3: 3 / 10\nw4: 3 / 10\nw5: 3 / 10\nw6: 3 / 10\nw7: 3 / 10\nw8: 3 / 10\nw9: 3 / 10\nw10: - / -\nw11: 3 / 10\n\nMilestone Total: 12 / 40\nLab Total: 30 / 100\n'
+
+04-February-2022 16:06:06 running ./w2/pp_marks.sh
+04-February-2022 16:06:06 | SCORE: 2.0 / 2.0
